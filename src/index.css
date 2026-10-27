@@ -1,0 +1,178 @@
+/* StudyOS Global Styles & Design System */
+:root {
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-navy-dark: #0f172a;
+  --color-navy-card: #1e293b;
+  --color-bg-app: #f8fafc;
+  --color-card-bg: #ffffff;
+  --color-border: #e2e8f0;
+  --color-border-hover: #cbd5e1;
+  --color-text-main: #0f172a;
+  --color-text-muted: #64748b;
+  --color-text-subtle: #94a3b8;
+
+  --color-emerald: #059669;
+  --color-amber: #d97706;
+  --color-rose: #e11d48;
+  --color-purple: #7c3aed;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg-app);
+  color: var(--color-text-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+input, button, select, textarea {
+  font-family: inherit;
+}
+
+/* Shell Layout */
+.studyos-app-shell {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--color-bg-app);
+}
+
+.studyos-main-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow-y: auto;
+}
+
+.studyos-main-content {
+  flex: 1;
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Interactive card transitions */
+.studyos-feature-card:hover,
+.studyos-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04) !important;
+}
+
+.studyos-queue-item:hover {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+}
+
+/* SlideUp Animation for Toasts */
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 860px) {
+  .studyos-sidebar {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    transform: translateX(-100%);
+    box-shadow: 10px 0 25px rgba(0, 0, 0, 0.2);
+  }
+
+  .studyos-sidebar-open {
+    transform: translateX(0) !important;
+  }
+
+  .studyos-mobile-menu-btn {
+    display: inline-flex !important;
+  }
+
+  .studyos-mobile-close-btn {
+    display: block !important;
+  }
+
+  .studyos-mobile-bottom-nav {
+    display: flex !important;
+  }
+
+  .studyos-main-content {
+    padding-bottom: 70px !important; /* Avoid overlap with mobile bottom bar */
+  }
+
+  .studyos-btn-text {
+    display: none;
+  }
+
+  .studyos-demo-badge {
+    display: none !important;
+  }
+
+  .studyos-keyboard-hint {
+    display: none !important;
+  }
+
+  .studyos-subtitle {
+    display: none !important;
+  }
+}
+
+@media (min-width: 861px) {
+  .studyos-mobile-backdrop {
+    display: none !important;
+  }
+  .studyos-mobile-bottom-nav {
+    display: none !important;
+  }
+}
+
+/* Clean Print Styles for Exhibition Handouts */
+@media print {
+  .studyos-sidebar,
+  .studyos-mobile-bottom-nav,
+  header,
+  .no-print,
+  button {
+    display: none !important;
+  }
+
+  body, .studyos-app-shell, .studyos-main-wrapper {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .studyos-main-content {
+    padding: 0 !important;
+  }
+}
