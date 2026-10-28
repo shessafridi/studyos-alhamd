@@ -165,7 +165,21 @@ export default function ProfileModal({
             </div>
           </div>
 
-          {/* Grade / School */}
+          {/* Institution */}
+          <div style={{ marginBottom: '14px' }}>
+            <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#334155', marginBottom: '4px' }}>
+              School / College
+            </label>
+            <input
+              type="text"
+              value={school}
+              onChange={e => setSchool(e.target.value)}
+              placeholder="Alhamdia International School & College"
+              style={{ width: '100%', padding: '9px 12px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '13.5px', boxSizing: 'border-box' }}
+            />
+          </div>
+
+          {/* Grade / Target */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
             <div>
               <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#334155', marginBottom: '4px' }}>

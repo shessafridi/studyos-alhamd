@@ -210,7 +210,7 @@ export default function Exams({
 
                     {exam.hall && (
                       <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                        <span>📍 <strong>Center:</strong> {exam.hall}</span>
+                        <span>🎯 <strong>Status:</strong> {exam.hall}</span>
                       </div>
                     )}
                   </div>

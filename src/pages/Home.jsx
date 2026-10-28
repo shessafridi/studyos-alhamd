@@ -50,28 +50,47 @@ export default function Home({ onNavigate, onOpenExhibitionGuide }) {
               gap: '8px',
               padding: '6px 14px',
               borderRadius: '999px',
-              backgroundColor: 'rgba(56, 189, 248, 0.15)',
-              border: '1px solid rgba(56, 189, 248, 0.3)',
-              color: '#38bdf8',
+              backgroundColor: 'rgba(212, 175, 55, 0.15)',
+              border: '1px solid rgba(212, 175, 55, 0.35)',
+              color: '#fef08a',
               fontSize: '12.5px',
-              fontWeight: 600,
+              fontWeight: 700,
               marginBottom: '20px'
             }}
           >
-            <SparklesIcon className="w-4 h-4" />
-            Science & Arts Exhibition Prototype • Matric & O-Level Edition
+            <SparklesIcon className="w-4 h-4 text-amber-400" />
+            Alhamdia International School & College • Student Operating System
           </div>
 
-          <h1 style={{ fontSize: '38px', fontWeight: 800, lineHeight: 1.15, letterSpacing: '-0.025em', margin: '0 0 16px' }}>
-            Study<span style={{ color: '#38bdf8' }}>OS</span>
-          </h1>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '16px' }}>
+            <img
+              src="/alhamdia-logo.png"
+              alt="Alhamdia Crest"
+              style={{
+                width: '72px',
+                height: '72px',
+                borderRadius: '50%',
+                backgroundColor: '#ffffff',
+                padding: '2px',
+                boxShadow: '0 0 20px rgba(212, 175, 55, 0.4)'
+              }}
+            />
+            <div>
+              <h1 style={{ fontSize: '32px', fontWeight: 900, lineHeight: 1.15, letterSpacing: '-0.02em', margin: 0 }}>
+                ALHAMDIA <span style={{ color: '#d4af37' }}>STUDENT PLANNER</span>
+              </h1>
+              <div style={{ fontSize: '13px', fontWeight: 700, color: '#fef08a', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+                Alhamdia International School & College
+              </div>
+            </div>
+          </div>
 
-          <p style={{ fontSize: '20px', fontWeight: 600, color: '#93c5fd', margin: '0 0 16px' }}>
+          <p style={{ fontSize: '18px', fontWeight: 600, color: '#e2e8f0', margin: '0 0 16px' }}>
             “Your studies. One clear plan.”
           </p>
 
-          <p style={{ fontSize: '15px', color: '#cbd5e1', lineHeight: 1.6, margin: '0 0 28px' }}>
-            Students in Pakistan often manage homework, board examination dates, syllabus coverage, and practice questions across scattered notebooks and chat groups. <strong>StudyOS</strong> brings everything into one student-friendly command center that turns deadlines and quiz mistakes into a clear study roadmap.
+          <p style={{ fontSize: '14.5px', color: '#cbd5e1', lineHeight: 1.6, margin: '0 0 28px' }}>
+            Designed exclusively for Alhamdia students preparing for secondary school board examinations (Matric FBISE and Cambridge O-Level). <strong>Alhamdia Student Planner</strong> turns homework deadlines, past paper practice, and quiz errors into a crystal-clear daily revision roadmap.
           </p>
 
           <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>

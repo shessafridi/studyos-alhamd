@@ -109,10 +109,10 @@ export default function Tasks({
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', flexWrap: 'wrap', gap: '14px' }}>
         <div>
           <h2 style={{ fontSize: '22px', fontWeight: 800, color: '#0f172a', margin: 0 }}>
-            Homework & Assignments
+            Study Tasks & Daily Goals
           </h2>
           <p style={{ fontSize: '13px', color: '#64748b', margin: '2px 0 0' }}>
-            Manage daily school homework, lab write-ups, and past paper worksheets.
+            Plan your daily revision targets, assignments, and past paper practice sessions.
           </p>
         </div>
 
@@ -134,7 +134,7 @@ export default function Tasks({
           }}
         >
           <PlusIcon className="w-4 h-4" />
-          Add Assignment
+          Add Study Task
         </button>
       </div>
 

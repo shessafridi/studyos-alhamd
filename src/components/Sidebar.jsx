@@ -18,23 +18,25 @@ export default function Sidebar({
   onNavigate,
   tasks = [],
   exams = [],
+  currentUser = null,
   isOpenMobile = false,
   onCloseMobile,
-  onOpenExhibitionGuide
+  onOpenExhibitionGuide,
+  onLogout
 }) {
   const pendingTasksCount = tasks.filter(t => !t.completed).length;
   const upcomingExamsCount = exams.length;
 
   const NAV_ITEMS = [
-    { id: 'dashboard', label: 'Dashboard', icon: DashboardIcon },
-    { id: 'tasks', label: 'Homework Tasks', icon: TasksIcon, badge: pendingTasksCount > 0 ? pendingTasksCount : null, badgeColor: 'blue' },
-    { id: 'exams', label: 'Exam Timetable', icon: ExamsIcon, badge: upcomingExamsCount > 0 ? upcomingExamsCount : null, badgeColor: 'amber' },
-    { id: 'syllabus', label: 'Syllabus Tracker', icon: SyllabusIcon },
-    { id: 'lessons', label: 'Lesson Studio & Search', icon: SparklesIcon, badge: 'AI', badgeColor: 'blue' },
-    { id: 'pastpapers', label: 'Past Papers & Mocks', icon: GraduationCapIcon, badge: 'Vault', badgeColor: 'emerald' },
-    { id: 'quiz', label: 'Diagnostic Quiz', icon: QuizIcon },
-    { id: 'progress', label: 'Smart Revision', icon: ProgressIcon, badge: 'Rules', badgeColor: 'violet' },
-    { id: 'home', label: 'Home Page', icon: HomeIcon }
+    { id: 'dashboard', label: 'Study Command Center', icon: DashboardIcon },
+    { id: 'tasks', label: 'My Study Tasks', icon: TasksIcon, badge: pendingTasksCount > 0 ? pendingTasksCount : null, badgeColor: 'blue' },
+    { id: 'exams', label: 'Exam Countdowns', icon: ExamsIcon, badge: upcomingExamsCount > 0 ? upcomingExamsCount : null, badgeColor: 'amber' },
+    { id: 'syllabus', label: 'Syllabus Mastery', icon: SyllabusIcon },
+    { id: 'lessons', label: 'Revision Studio & Q&A', icon: SparklesIcon, badge: 'High Yield', badgeColor: 'blue' },
+    { id: 'pastpapers', label: 'Past Papers Vault (21-24)', icon: GraduationCapIcon, badge: 'FBISE/CAIE', badgeColor: 'emerald' },
+    { id: 'quiz', label: 'Active Recall Quiz', icon: QuizIcon },
+    { id: 'progress', label: 'Study Intelligence', icon: ProgressIcon, badge: 'Rules', badgeColor: 'violet' },
+    { id: 'home', label: 'About StudyOS', icon: HomeIcon }
   ];
 
   const handleNavClick = (pageId) => {
@@ -92,25 +94,33 @@ export default function Sidebar({
           >
             <div
               style={{
-                width: '38px',
-                height: '38px',
-                borderRadius: '10px',
-                background: 'linear-gradient(135deg, #2563eb, #38bdf8)',
+                width: '42px',
+                height: '42px',
+                borderRadius: '50%',
+                backgroundColor: '#ffffff',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: '#ffffff',
-                boxShadow: '0 4px 12px rgba(37, 99, 235, 0.3)'
+                boxShadow: '0 0 12px rgba(212, 175, 55, 0.4)',
+                padding: '2px',
+                flexShrink: 0
               }}
             >
-              <LogoIcon className="w-5 h-5" />
+              <img
+                src="/alhamdia-logo.png"
+                alt="Alhamdia Logo"
+                style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: '50%' }}
+              />
             </div>
             <div>
-              <div style={{ fontSize: '18px', fontWeight: 800, letterSpacing: '-0.02em', color: '#ffffff' }}>
-                Study<span style={{ color: '#38bdf8' }}>OS</span>
+              <div style={{ fontSize: '13.5px', fontWeight: 800, letterSpacing: '0.04em', color: '#f8fafc', lineHeight: 1.2 }}>
+                ALHAMDIA
               </div>
-              <div style={{ fontSize: '10.5px', color: '#94a3b8', fontWeight: 500, letterSpacing: '0.01em' }}>
-                Your studies. One clear plan.
+              <div style={{ fontSize: '10.5px', fontWeight: 700, color: '#d4af37', letterSpacing: '0.04em' }}>
+                STUDENT PLANNER
+              </div>
+              <div style={{ fontSize: '9px', color: '#94a3b8', whiteSpace: 'nowrap' }}>
+                Int'l School & College
               </div>
             </div>
           </div>
@@ -235,42 +245,65 @@ export default function Sidebar({
           </button>
         </div>
 
-        {/* Student Profile Card */}
+        {/* Student Profile Card & Logout */}
         <div
           style={{
-            padding: '14px 16px',
+            padding: '12px 16px',
             borderTop: '1px solid #1e293b',
             backgroundColor: '#090d16',
             display: 'flex',
             alignItems: 'center',
-            gap: '12px'
+            justifyContent: 'space-between',
+            gap: '10px'
           }}
         >
-          <div
-            style={{
-              width: '36px',
-              height: '36px',
-              borderRadius: '50%',
-              backgroundColor: '#1e40af',
-              color: '#ffffff',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '13px',
-              fontWeight: 700,
-              flexShrink: 0
-            }}
-          >
-            SK
-          </div>
-          <div style={{ overflow: 'hidden', flex: 1 }}>
-            <div style={{ fontSize: '13px', fontWeight: 600, color: '#f8fafc', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-              Shayan Khan
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0, flex: 1 }}>
+            <div
+              style={{
+                width: '34px',
+                height: '34px',
+                borderRadius: '50%',
+                background: 'linear-gradient(135deg, #d4af37, #92400e)',
+                color: '#ffffff',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '12px',
+                fontWeight: 800,
+                flexShrink: 0
+              }}
+            >
+              {currentUser?.name ? currentUser.name.slice(0, 2).toUpperCase() : 'SK'}
             </div>
-            <div style={{ fontSize: '11px', color: '#64748b', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-              Matric & O-Level Demo
+            <div style={{ overflow: 'hidden', flex: 1 }}>
+              <div style={{ fontSize: '12.5px', fontWeight: 700, color: '#f8fafc', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                {currentUser?.name || 'Shayan Khan'}
+              </div>
+              <div style={{ fontSize: '10.5px', color: '#d4af37', fontWeight: 600, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                {currentUser?.rollNo || 'ALH-1042'} • {currentUser?.track ? currentUser.track.split(' ')[0] : 'Matric'}
+              </div>
             </div>
           </div>
+
+          {onLogout && (
+            <button
+              onClick={onLogout}
+              title="Log out of student portal"
+              style={{
+                backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                border: '1px solid rgba(239, 68, 68, 0.25)',
+                color: '#f87171',
+                padding: '5px 8px',
+                borderRadius: '6px',
+                fontSize: '11px',
+                fontWeight: 600,
+                cursor: 'pointer',
+                flexShrink: 0
+              }}
+            >
+              Exit
+            </button>
+          )}
         </div>
       </aside>
     </>

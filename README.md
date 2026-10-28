@@ -1,178 +1,177 @@
-# StudyOS — “Your studies. One clear plan.”
+# ALHAMDIA STUDENT PLANNER
+### Official Student Study Operating System & Daily Focus Dashboard
+**Alhamdia International School & College**  
+*“Your studies. One clear plan.”*
 
-**StudyOS** is an educational dashboard designed for **Matric (FBISE / BISE)** and **Cambridge O-Level (CAIE)** students in Pakistan. Built for presentation at a Science & Arts Exhibition, StudyOS unifies daily homework, examination countdowns, honest syllabus tracking, and diagnostic practice questions into a single student-friendly interface.
-
----
-
-## 1. Product Vision & Problem Statement
-
-### The Problem
-Matric and O-Level students prepare for demanding high-stakes board examinations across 6 to 9 subjects. In practice, students track homework on loose registers, examination timetables on paper photocopies or WhatsApp groups, syllabus coverage in textbooks, and past-paper mistakes in disparate notebooks. It is difficult for a student to answer the critical daily question:
-> *"I have 2 hours tonight. What should I study first?"*
-
-### The Solution
-StudyOS bridges this gap by centralizing tasks, deadlines, and syllabus chapters. It features a **transparent, rule-based recommendation engine** that connects recent quiz errors with upcoming exam dates to tell students exactly what requires attention first, providing a clear explanation for every recommendation.
+Designed and engineered for **Matric (FBISE Science)** and **Cambridge O-Level (CAIE)** students for presentation at the Science & Arts Exhibition and for daily academic excellence.
 
 ---
 
-## 2. Key Working Features
+## 1. Overview & Institution Branding
 
-### A. Professional Landing Page
-- StudyOS branding and tagline.
-- Problem and solution summary with dual-track (Matric / O-Level) focus.
-- One-click navigation to the student dashboard or the built-in Exhibition Guide.
-- Sample demonstration statistics clearly labeled as verified demo metrics.
+**ALHAMDIA STUDENT PLANNER** is a student-first personal study operating system. It eliminates chaos for secondary and higher-secondary students preparing for high-stakes board examinations by unifying homework, exam timetables, syllabus completion tracking, diagnostic quizzes, past board papers, and Pomodoro study sprints into a single offline-ready portal.
 
-### B. Student Dashboard
-- Student profile banner (Shayan Khan, Grade 10 Matric Science & O-Level Track).
-- Key operational metric cards: Pending Tasks, Completed Tasks, Nearest Exam Countdown, and Verified Syllabus Progress.
-- **Today's Suggested Study Tasks (Smart Queue)**: Top recommendations generated deterministically by pairing overdue work, imminent exam dates, and quiz mistakes.
-- Glanceable exam timetable and per-subject syllabus progress bars.
-
-### C. Homework & Assignment Manager
-- Create assignments with Title, Subject (Math, Physics, Chemistry, Biology, Computer Science, English, etc.), Due Date, Priority (High, Medium, Low), and optional notes.
-- In-place editing and checkbox toggle for immediate completion status.
-- Safe deletion with a double-confirmation modal.
-- Real-time search filter and subject category dropdown.
-- Automated overdue detection (highlights tasks past deadline with day counts).
-- Instant persistence in `localStorage`.
-
-### D. Examination Planner & Countdown
-- Timetable for upcoming FBISE / BISE and Cambridge O-Level sessions.
-- Displays subject, paper code/name, date, time session, and examination center.
-- Dynamic countdown calculation: "Today!", "Tomorrow", "In 4 days", or "Passed X days ago".
-- Past examinations handled gracefully without negative time bugs.
-- Add, edit, and delete examination entries.
-
-### E. Subject & Syllabus Tracker
-- 6 core curriculum subjects (Mathematics, Physics, Chemistry, Biology, Computer Science, English) with 28 detailed chapters/topics.
-- Multi-state topic checkboxes: **Not Started**, **In Progress**, and **Mastered (Completed)**.
-- **Accurate progress calculation**: Percentages represent actual chapter completions. No fake or hardcoded progress bars.
-
-### F. Interactive Diagnostic Quiz
-- 15 original, curriculum-accurate MCQs across Mathematics, Physics, Chemistry, Biology, and English.
-- Choice between **Full Diagnostic (15 Qs)** and **Quick Demo (5 Qs)** for fast 2-minute booth demonstrations.
-- One question at a time with instant score calculation.
-- Question-by-question review with pedagogical rationale and correct answer explanations.
-- Auto-saves quiz attempt records and logs incorrect topics into local storage.
-- Explicit classroom demonstration notice avoiding claims of being an official board examination.
-
-### G. Smart Progress & Rule-Based Revision Engine
-- Unified progress statistics (homework rate, syllabus coverage, quiz attempts, concept gap count).
-- Identifies weak concepts across all past quiz attempts.
-- **Transparent Rule Engine**:
-  1. *Rule 1 (Urgent Homework)*: Flags overdue assignments.
-  2. *Rule 2 (Exam-Syllabus Alignment)*: Cross-references exams occurring within 10 days with uncompleted syllabus topics.
-  3. *Rule 3 (Concept Remediation)*: Recommends reviewing topics missed in diagnostic quizzes.
-  4. *Rule 4 (Syllabus Balancer)*: Suggests advancing topics in the subject with the lowest completion rate.
-- Clear audit trail explaining the exact rule and trigger reason for every recommendation.
-
-### H. Exhibition Demo Controls & Booth Guide
-- Pre-seeded with realistic, date-relative sample data on initial launch.
-- **Reset Demo Data**: One-click restore with confirmation modal to reset the clean demonstration state for the next judge.
-- **Clear All Data**: Allows demonstrating fresh empty states.
-- **Built-in Exhibition Guide Modal**: Minute-by-minute demonstration script, system architecture diagram, and judge Q&A prep accessible directly from the top navigation bar.
-
-### I. Lesson Studio & Universal Topic Search
-- Universal search across 28 syllabus chapters with real-time filtering by subject and keyword.
-- Concise 3-minute summaries, governing scientific laws, and complete theoretical breakdowns.
-- Step-by-step worked board numericals and examiner traps.
-
-### J. Topic Question & Answer Generator (Active Recall)
-- Generates 3 tiers of syllabus-authentic exam questions for any searched topic:
-  - **Section 1**: 2-Mark Short Definitions & Formulas.
-  - **Section 2**: 3-Mark Conceptual & Reasoning Questions.
-  - **Section 3**: 5-Mark Structured Problems & Solved Board Numericals.
-- **Active Recall Flashcard Mode**: Toggle "Reveal / Hide Answer" to quiz oneself before viewing model answers and mark schemes.
-- One-click "Add Question to Study Tasks" to schedule it into homework.
-
-### K. Past Papers Vault (2021–2024) & Mock Exam Generator
-- Comprehensive question bank covering **Federal Board (FBISE Islamabad)** and **Cambridge O-Level (CAIE)** across 2021, 2022, 2023, and 2024.
-- Official marking scheme rubrics breaking down where marks are scored (`[1 mark]`, `[2 marks]`, etc.) and examiner advice.
-- **Smart Mock Paper Generator**: Creates full, authentic board examination papers in seconds complete with candidate instructions, time allowances, Section B & Section C layouts, and printable A4 formatting.
+- **Institution:** Alhamdia International School & College
+- **Motto / Tagline:** *“Your studies. One clear plan.”*
+- **Official Crest:** Alhamdia Golden Lion Circular Insignia
+- **Target Curricula:** Federal Board (FBISE SSC & HSSC) and Cambridge Assessment International Education (CAIE O-Level)
 
 ---
 
-## 3. Technology Architecture & Data Flow
+## 2. Key Architecture & Features
 
-```
-[ User Action / Inputs ]
-          ↓
-[ React Components (Vite Single Page Application) ]
-          ↓
-[ LocalStorage Service (`src/utils/storage.js`) ]
-          ↓ (Synchronous Custom Event Dispatch)
-[ Pure Deterministic Rule Engine (`src/utils/recommendations.js`) ]
-          ↓
-[ Reactive State Update across Dashboard & Progress Views ]
-```
+### 🔐 1. Student Authentication & Account Creation
+- **New Student Registration:** Students create their own personal account by entering their Full Name, Roll Number / ID (e.g., `ALH-1055`), Grade/Class, Curriculum Track, Academic Target Goal, and Password/PIN.
+- **Instant Activation:** Immediately activates and configures the student's personal study dashboard.
+- **Local Persistence:** Credentials and progress are safely stored in browser `localStorage`.
+- **1-Click Exhibition Demonstration Accounts:** Pre-configured accounts for rapid judge demonstrations:
+  - *Zainab Tariq* (`ALH-1042`, PIN: `123`) — Matric FBISE Science Candidate
+  - *Rayan Farooq* (`ALH-1088`, PIN: `123`) — Cambridge O-Level CAIE Candidate
 
-- **Framework**: React 19 + Vite 8
-- **Styling**: Tailored CSS Design System (refined navy, royal blue, emerald, amber, rose)
-- **Icons**: Custom inline zero-dependency scalable SVG icons (`src/components/Icons.jsx`)
-- **Storage**: Browser `localStorage` (100% offline-ready, no cloud latency or network failures during the exhibition)
+### ⚡ 2. Quick Command Launcher (`Ctrl + K`)
+- Press `Ctrl + K` (or click **"⚡ Commands"** in the top navigation bar) to open a spotlight search modal.
+- Jump directly to any subject, past paper vault, diagnostic quiz, lesson notes, or Zen study room with zero clicks.
+
+### 🧘 3. Zen Focus Study Sprint Room
+- Distraction-free Pomodoro study sprint timer (15 min, 25 min, 45 min, 60 min).
+- Built-in live **Formula & Scratchpad** for working through numericals and derivations during timed sprints.
+- Auto-saves scratch notes locally per study session.
+
+### 📚 4. Board Past Papers Vault & Mock Generator
+- 2021–2024 genuine board examination questions covering Mathematics, Physics, Chemistry, Biology, and Computer Science.
+- Covers both **Federal Board (FBISE)** and **Cambridge O-Level (CAIE)**.
+- Official step-by-step marking schemes and examiner rubrics for every question.
+- **A4 Printable Mock Exam Generator:** Generates formatted mock papers with instructions, marks distribution, and print layout for timed self-testing.
+
+### 💡 5. Topic Q&A Active Recall Generator
+- 3-tier structured practice packs generated dynamically for any curriculum topic:
+  - **Tier 1: Definitions & Core Formulas (2 Marks)** with key keywords.
+  - **Tier 2: Conceptual & Scientific Reasoning (3 Marks)** with cause-and-effect explanations.
+  - **Tier 3: Long Numerical / Derivation (5 Marks)** with complete step-by-step working.
+- **Flashcard Active Recall Mode:** Students can test their recall before flipping to reveal model answers.
+
+### 🎯 6. Honest Syllabus & Exam Countdown Tracker
+- 6 core curriculum subjects with 28 detailed chapters/topics.
+- Multi-state topic tracking: *Not Started*, *In Progress*, and *Mastered*.
+- Honest, calculated progress percentages — no hardcoded progress bars.
+- Dynamic exam countdowns ("Today!", "Tomorrow", "In 4 days") with past-exam handling.
+
+### 🧠 7. Deterministic Recommendation Engine
+- Analyzes quiz mistakes, overdue homework assignments, and imminent exam deadlines.
+- Automatically generates prioritized study recommendations with transparent explanations (*"Triggered by: Quiz mistake in Current Electricity"*).
 
 ---
 
-## 4. How to Run the Application
+## 3. Quick Start (Running Locally)
 
-### Development Mode:
+### Option A: 1-Click Launcher (Windows)
+Double-click `Start_StudyOS_Local.bat` in the root folder. It starts the server and opens `http://localhost:5173/` in your browser.
+
+### Option B: Manual Terminal Execution
 ```powershell
 # Navigate to the project directory
 cd "C:\Users\Laptop Home\.gemini\antigravity\scratch\studyos"
 
-# Start the Vite development server
-npm.cmd run dev
+# Install dependencies (only needed once)
+npm install
+
+# Start Vite dev server on port 5173
+npm run dev
 ```
 
-### Production Build & Preview:
+Visit in your browser:
+- **Local PC:** [http://localhost:5173/](http://localhost:5173/)
+- **Mobile / Tablet on same Wi-Fi:** `http://<your-local-ip>:5173/`
+
+---
+
+## 4. Production Build & Deployment
+
+### Build for Production:
 ```powershell
-# Run the optimized production build
-npm.cmd run build
-
-# Preview the production bundle locally
-npm.cmd run preview
+npm run build
 ```
+The optimized client bundle will be generated in `dist/`.
 
-### Automated Logic Verification Suite:
+### Deployment Options:
+1. **Netlify Drop:** Drag and drop the `dist/` folder or `studyos-dist-production.zip` directly onto [app.netlify.com/drop](https://app.netlify.com/drop).
+2. **GitHub Pages / Vercel:** Push repository to GitHub and connect to Vercel or enable GitHub Pages.
+3. **Local Offline Standalone:** Host using any local static web server or launch with `Start_StudyOS_Local.bat`.
+
+---
+
+## 5. Automated Verification Suite
+
+Run the comprehensive 56-point automated test suite:
 ```powershell
 node src/test/verifyAllFeatures.test.js
 ```
 
----
-
-## 5. 5-Minute Exhibition Demonstration Script (For Students)
-
-1. **Minute 1: The Hook (Home Page)**
-   - Introduce yourself: *"We are presenting StudyOS: Your studies. One clear plan."*
-   - Explain the problem: *"Students in Matric and O-Level manage 8 subjects across scattered notebooks, WhatsApp class groups, and loose papers. We built StudyOS to give every student a clear, prioritized study roadmap."*
-2. **Minute 2: The Unified Hub (Dashboard)**
-   - Click **Open Dashboard**.
-   - Show Shayan Khan’s student dashboard: 6 pending tasks, nearest board paper (Physics in 4 days), and genuine 46% syllabus coverage.
-3. **Minute 3: Interactive Diagnostic Quiz (Quiz)**
-   - Click **Diagnostic Quiz** and select **Quick Demo (5 Qs)**.
-   - Answer questions on screen. Deliberately get one wrong (e.g., Ohm's law or Newton's law).
-   - Click **Submit & Score** to demonstrate instant grading, question-by-question explanations, and automatic weak-topic recording.
-4. **Minute 4: The Smart Revision Engine (Progress)**
-   - Click **View Smart Revision Queue**.
-   - Show how the rule engine immediately paired the quiz mistake with the upcoming exam to generate a revision item with an explicit explanation: *"Triggered by: Diagnostic quiz mistake in Current Electricity"*.
-5. **Minute 5: Reliability & Reset (Demo Controls)**
-   - Toggle a homework task complete, then click **Reset Demo** in the top header.
-   - Show judges how the system restores the verified sample state in 1 second, ready for the next visitor.
+All 56 assertions verify:
+- Diagnostic MCQ question bank integrity
+- Exam countdown date arithmetic
+- Honest syllabus percentage calculation
+- Quiz mistake and weak topic tracking
+- Deterministic recommendation generation
+- Lesson studio and curriculum search
+- 3-tier Q&A generator
+- Past paper vault data and marking schemes
+- Alhamdia student accounts and registration persistence
 
 ---
 
-## 6. Privacy, Security & Data Handling
+## 6. Project Structure
 
-- **No Remote Servers**: StudyOS operates locally in the browser storage. No student credentials, passwords, or personal identifying numbers are collected or transmitted.
-- **Sample Data Integrity**: All student records (Shayan Khan) and marks are fictional and clearly marked as demonstration records.
-- **Repeatable Demonstrations**: State resets are deterministic and self-contained.
+```
+studyos/
+├── public/
+│   ├── alhamdia-logo.png        # Official circular gold lion crest
+│   ├── alhamdia-logo.jpg        # High-resolution crest asset
+│   └── favicon.ico
+├── src/
+│   ├── components/
+│   │   ├── Sidebar.jsx          # Alhamdia branded sidebar navigation
+│   │   ├── Header.jsx           # Top bar with streak, profile, and command launcher
+│   │   ├── ZenFocusModal.jsx    # Pomodoro sprint timer & scratchpad
+│   │   ├── CommandPaletteModal.jsx # Ctrl+K spotlight launcher
+│   │   ├── ProfileModal.jsx     # Student profile & settings modal
+│   │   └── ErrorBoundary.jsx    # Graceful error protection
+│   ├── pages/
+│   │   ├── Login.jsx            # Sign In & Student Account Creation tabs
+│   │   ├── Home.jsx             # Exhibition landing presentation
+│   │   ├── Dashboard.jsx        # Unified focus dashboard & smart queue
+│   │   ├── Tasks.jsx            # Assignment manager & overdue detector
+│   │   ├── Exams.jsx            # Board exam timetable & countdown
+│   │   ├── Syllabus.jsx         # Chapter-by-chapter mastery tracker
+│   │   ├── Lessons.jsx          # Lesson notes & dynamic Q&A active recall
+│   │   ├── PastPapers.jsx       # Board past papers (2021-2024) & mock maker
+│   │   ├── Quiz.jsx             # Diagnostic MCQs & mistake tracker
+│   │   └── Progress.jsx         # Revision analytics & recommendation queue
+│   ├── data/
+│   │   ├── demoData.js          # Student accounts, syllabus & demo records
+│   │   ├── questions.js         # Diagnostic MCQs with explanations
+│   │   ├── lessonsData.js       # Curated study notes & worked examples
+│   │   ├── topicQAData.js       # 3-tier Q&A generator
+│   │   └── pastPapersData.js    # FBISE & Cambridge past board questions
+│   ├── utils/
+│   │   ├── storage.js           # LocalStorage engine & account manager
+│   │   ├── dateUtils.js         # Countdown & deadline arithmetic
+│   │   └── recommendations.js   # Deterministic recommendation algorithms
+│   ├── test/
+│   │   └── verifyAllFeatures.test.js # 56/56 automated test suite
+│   ├── App.jsx                  # Main application orchestrator
+│   └── main.jsx                 # Entry point
+├── index.html                   # HTML entry with official Alhamdia title & meta
+├── package.json                 # Dependencies & scripts
+└── vite.config.js               # Vite build configuration
+```
 
 ---
 
-## 7. Future Development Roadmap
+## 7. Privacy & Offline Guarantee
 
-1. **Multi-User Profiles**: Optional encrypted local profiles for siblings sharing a home computer.
-2. **Teacher & Parent Portal**: Read-only export summaries formatted as PDF weekly study reports.
-3. **Past Paper Question Bank Expansion**: Expanding the diagnostic MCQ bank from 15 demonstration items to 500+ categorized past paper questions for FBISE, BISE Lahore/Rawalpindi, and CAIE.
-4. **Study Timer (Pomodoro)**: Integrated 25-minute study focus timer linked directly to queued tasks.
+- **Zero Cloud Dependence:** Works 100% offline. Ideal for exhibition stalls and areas with spotty Wi-Fi.
+- **Client-Side Storage:** All tasks, exams, progress, and student credentials remain inside the browser's `localStorage`. No data is uploaded to third-party tracking servers.
+
+---
+© 2026 Alhamdia International School & College. All rights reserved.

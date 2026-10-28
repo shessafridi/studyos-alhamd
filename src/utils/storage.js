@@ -282,6 +282,25 @@ export function importAllData(jsonString) {
   }
 }
 
+// --- ALHAMDIA REGISTERED STUDENTS ---
+
+export function getRegisteredStudents() {
+  try {
+    const raw = safeGet('alhamdia_registered_students', '[]');
+    return JSON.parse(raw);
+  } catch {
+    return [];
+  }
+}
+
+export function registerStudentAccount(account) {
+  const existing = getRegisteredStudents();
+  const updated = existing.filter(a => a.rollNo.toLowerCase() !== account.rollNo.toLowerCase());
+  updated.push(account);
+  safeSet('alhamdia_registered_students', JSON.stringify(updated));
+  return account;
+}
+
 // --- RESET & CLEAR CONTROLS ---
 
 export function resetDemoData() {

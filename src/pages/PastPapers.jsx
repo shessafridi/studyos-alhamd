@@ -640,10 +640,21 @@ export default function PastPapers({
             >
               {/* Paper Header */}
               <div style={{ textAlign: 'center', borderBottom: '2px solid #0f172a', paddingBottom: '16px', marginBottom: '20px' }}>
-                <div style={{ fontSize: '13px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#475569' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '14px', marginBottom: '8px' }}>
+                  <img src="/alhamdia-logo.png" alt="Alhamdia Crest" style={{ width: '48px', height: '48px', borderRadius: '50%' }} />
+                  <div>
+                    <div style={{ fontSize: '14px', fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#0f172a' }}>
+                      Alhamdia International School & College
+                    </div>
+                    <div style={{ fontSize: '11px', fontWeight: 600, color: '#475569', letterSpacing: '0.05em' }}>
+                      DEPARTMENT OF EXAMINATIONS & ACADEMIC PREPARATION
+                    </div>
+                  </div>
+                </div>
+                <div style={{ fontSize: '12px', fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase', color: '#475569' }}>
                   {generatedPaper.boardName}
                 </div>
-                <h1 style={{ fontSize: '20px', fontWeight: 800, margin: '6px 0', color: '#0f172a', textTransform: 'uppercase' }}>
+                <h1 style={{ fontSize: '19px', fontWeight: 800, margin: '6px 0', color: '#0f172a', textTransform: 'uppercase' }}>
                   {generatedPaper.title}
                 </h1>
                 <div style={{ fontSize: '13px', color: '#334155', display: 'flex', justifyContent: 'space-around', marginTop: '12px', flexWrap: 'wrap', gap: '8px', fontFamily: 'sans-serif' }}>
@@ -748,7 +759,7 @@ export default function PastPapers({
 
               {/* Footer Stamp */}
               <div style={{ textAlign: 'center', marginTop: '36px', paddingTop: '16px', borderTop: '1px solid #cbd5e1', fontSize: '11px', color: '#64748b', fontFamily: 'sans-serif' }}>
-                *** END OF EXAMINATION PAPER • StudyOS Science & Arts Exhibition Demo • Generated: {generatedPaper.generatedDate} ***
+                *** END OF EXAMINATION PAPER • ALHAMDIA INTERNATIONAL SCHOOL & COLLEGE • ALHAMDIA STUDENT PLANNER ***
               </div>
             </div>
           )}

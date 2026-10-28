@@ -10,8 +10,10 @@ import {
   INITIAL_TASKS,
   INITIAL_EXAMS,
   INITIAL_SYLLABUS,
-  INITIAL_QUIZ_HISTORY
+  INITIAL_QUIZ_HISTORY,
+  PRESET_STUDENT_ACCOUNTS
 } from '../data/demoData.js';
+import { getRegisteredStudents, registerStudentAccount } from '../utils/storage.js';
 
 let passedTests = 0;
 let totalTests = 0;
@@ -156,6 +158,32 @@ PAST_PAPERS_DATABASE.forEach(q => {
 });
 assert(allPastPapersValid, 'All past questions contain question text, model answers, and official marking schemes');
 assert(Boolean(BOARD_EXAM_TEMPLATES.Matric && BOARD_EXAM_TEMPLATES['O-Level']), 'Board examination templates configured for Matric and O-Level');
+
+// 9. Test Alhamdia Student Accounts & Authentication
+console.log('\n--- 9. Alhamdia Student Accounts & Authentication ---');
+assert(PRESET_STUDENT_ACCOUNTS.length >= 2, `Preset Alhamdia student accounts available (Total: ${PRESET_STUDENT_ACCOUNTS.length})`);
+assert(PRESET_STUDENT_ACCOUNTS.some(a => a.rollNo === 'ALH-1042'), 'Preset account ALH-1042 present for Matric candidate');
+assert(PRESET_STUDENT_ACCOUNTS.some(a => a.rollNo === 'ALH-1088'), 'Preset account ALH-1088 present for O-Level candidate');
+assert(INITIAL_STUDENT_PROFILE.school === 'Alhamdia International School & College', 'School profile set to Alhamdia International School & College');
+
+// Student Account Creation & Registration Flow
+const testAccount = {
+  id: 'student-test-999',
+  name: 'Hamza Tariq',
+  rollNo: 'ALH-2026',
+  grade: 'Grade 10 (SSC-II)',
+  track: 'Matric (FBISE Science)',
+  school: 'Alhamdia International School & College',
+  targetGoal: 'Target: 98% in Federal Board Finals',
+  password: 'mypassword123'
+};
+registerStudentAccount(testAccount);
+const registeredList = getRegisteredStudents();
+const foundNewStudent = registeredList.find(s => s.rollNo === 'ALH-2026');
+assert(Boolean(foundNewStudent), 'Student account registration persists to storage');
+assert(foundNewStudent && foundNewStudent.name === 'Hamza Tariq', 'Registered student name is preserved accurately');
+assert(foundNewStudent && foundNewStudent.password === 'mypassword123', 'Registered student password/PIN is stored securely');
+assert(foundNewStudent && foundNewStudent.track === 'Matric (FBISE Science)', 'Registered student curriculum track is mapped correctly');
 
 console.log(`\n========================================`);
 console.log(`TEST SUMMARY: ${passedTests} / ${totalTests} assertions passed.`);

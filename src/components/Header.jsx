@@ -14,21 +14,24 @@ export default function Header({
   onResetData,
   onClearData,
   onOpenExhibitionGuide,
-  onOpenProfile
+  onOpenProfile,
+  onOpenZenFocus,
+  onOpenCommandPalette,
+  onLogout
 }) {
   const [showResetConfirm, setShowResetConfirm] = useState(false);
   const [showClearConfirm, setShowClearConfirm] = useState(false);
 
   const PAGE_TITLES = {
-    home: { title: 'StudyOS Overview', subtitle: 'Product Vision & Exhibition Showcase' },
-    dashboard: { title: 'Student Dashboard', subtitle: 'Welcome back! Here is your daily study overview.' },
-    tasks: { title: 'Homework Manager', subtitle: 'Track assignments, deadlines, and submission status.' },
-    exams: { title: 'Examination Planner', subtitle: 'Targeted countdowns for Matric & O-Level board sessions.' },
-    syllabus: { title: 'Subject & Syllabus Tracker', subtitle: 'Monitor chapter completion across science and humanities.' },
-    lessons: { title: 'Lesson Studio & Topic Search', subtitle: 'Search syllabus topics and generate structured revision notes.' },
-    pastpapers: { title: 'Past Papers & Mock Generator', subtitle: 'Authentic FBISE & CAIE questions (2021–2024) with marking schemes.' },
-    quiz: { title: 'Diagnostic MCQ Practice', subtitle: 'Curriculum-aligned questions to identify weak topics.' },
-    progress: { title: 'Progress & Smart Recommendations', subtitle: 'Deterministic rule engine connecting mistakes and deadlines.' }
+    home: { title: 'Alhamdia Student Planner', subtitle: 'Alhamdia International School & College' },
+    dashboard: { title: 'Study Command Center', subtitle: 'Your daily focus, study streak, and prioritized revision queue.' },
+    tasks: { title: 'My Study Tasks & Daily Goals', subtitle: 'Plan daily revision goals, assignments, and practice sessions.' },
+    exams: { title: 'Exam Countdown & Target Readiness', subtitle: 'Live countdowns, target boards, and revision readiness.' },
+    syllabus: { title: 'Syllabus Mastery Tracker', subtitle: 'Track topics mastered and watch your true curriculum progress grow.' },
+    lessons: { title: 'Revision Studio & Instant Q&A', subtitle: 'Search syllabus concepts, formula sheets, and board examiner hacks.' },
+    pastpapers: { title: 'Past Papers Vault & Mock Generator', subtitle: 'Authentic FBISE & CAIE questions (2021–2024) with step-by-step marking rubrics.' },
+    quiz: { title: 'Active Recall Diagnostic Quiz', subtitle: 'Test your retention and turn mistakes into targeted study recommendations.' },
+    progress: { title: 'Study Intelligence & Smart Plan', subtitle: 'Rule-based study suggestions connecting exam dates and weak concepts.' }
   };
 
   const currentMeta = PAGE_TITLES[activePage] || PAGE_TITLES.dashboard;
@@ -83,6 +86,55 @@ export default function Header({
 
         {/* Right: Demo Controls & Exhibition Actions */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }}>
+          {/* Quick Command Launcher */}
+          {onOpenCommandPalette && (
+            <button
+              onClick={onOpenCommandPalette}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                padding: '6px 10px',
+                borderRadius: '8px',
+                backgroundColor: '#f1f5f9',
+                border: '1px solid #cbd5e1',
+                color: '#1e293b',
+                fontSize: '12px',
+                fontWeight: 600,
+                cursor: 'pointer'
+              }}
+              title="Quick Search & Navigation (Ctrl+K)"
+            >
+              <span>⚡</span>
+              <span className="studyos-btn-text">Commands</span>
+              <kbd style={{ fontSize: '10px', color: '#64748b', backgroundColor: '#e2e8f0', padding: '1px 4px', borderRadius: '4px' }}>Ctrl+K</kbd>
+            </button>
+          )}
+
+          {/* Zen Focus Mode Button */}
+          {onOpenZenFocus && (
+            <button
+              onClick={onOpenZenFocus}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                padding: '6px 11px',
+                borderRadius: '8px',
+                backgroundColor: '#eff6ff',
+                border: '1px solid #bfdbfe',
+                color: '#1d4ed8',
+                fontSize: '12.5px',
+                fontWeight: 600,
+                cursor: 'pointer'
+              }}
+              title="Enter distraction-free study space with rough work scratchpad"
+            >
+              <span>🧘</span>
+              <span className="studyos-btn-text">Focus Room</span>
+            </button>
+          )}
+
           {/* Profile Switcher Quick Button */}
           {onOpenProfile && (
             <button
@@ -169,6 +221,29 @@ export default function Header({
           >
             <TrashIcon className="w-3.5 h-3.5" />
           </button>
+          {/* Log Out Button */}
+          {onLogout && (
+            <button
+              onClick={onLogout}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '4px',
+                padding: '6px 10px',
+                borderRadius: '8px',
+                backgroundColor: '#fff1f2',
+                border: '1px solid #fecdd3',
+                color: '#e11d48',
+                fontSize: '12px',
+                fontWeight: 600,
+                cursor: 'pointer'
+              }}
+              title="Log out of student planner"
+            >
+              <span>🚪</span>
+              <span className="studyos-btn-text">Log Out</span>
+            </button>
+          )}
         </div>
       </header>
 

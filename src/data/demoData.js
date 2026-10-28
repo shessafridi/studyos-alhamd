@@ -13,11 +13,35 @@ function offsetDate(days) {
 
 export const INITIAL_STUDENT_PROFILE = {
   name: 'Shayan Khan',
-  grade: 'Matric Science & O-Level Track',
-  school: 'Exhibition Demo Academy (Islamabad)',
+  rollNo: 'ALH-1042',
+  grade: 'Grade 10 Science (Matric & O-Level)',
+  school: 'Alhamdia International School & College',
   track: 'Matric / O-Level Science',
   targetGoal: 'Target: A* / 90%+ in Board Finals'
 };
+
+export const PRESET_STUDENT_ACCOUNTS = [
+  {
+    id: 'student-1',
+    name: 'Shayan Khan',
+    rollNo: 'ALH-1042',
+    grade: 'Grade 10 (SSC-II)',
+    track: 'Matric (FBISE Science)',
+    school: 'Alhamdia International School & College',
+    targetGoal: 'Target: 95%+ in Federal Board Finals',
+    password: '123'
+  },
+  {
+    id: 'student-2',
+    name: 'Ayesha Noor',
+    rollNo: 'ALH-1088',
+    grade: 'Grade 10 (Year 11)',
+    track: 'Cambridge O-Level (CAIE)',
+    school: 'Alhamdia International School & College',
+    targetGoal: 'Target: Straight A*s in CAIE Finals',
+    password: '123'
+  }
+];
 
 export const INITIAL_TASKS = [
   {
@@ -84,7 +108,7 @@ export const INITIAL_EXAMS = [
     board: 'FBISE / CAIE O-Level 5054',
     date: offsetDate(4),
     time: '09:00 AM - 11:30 AM',
-    hall: 'Hall A - Science Block',
+    hall: 'Readiness: High Priority (Review Numericals)',
     notes: 'Section A: Short answers; Section B: Numericals & derivations.'
   },
   {
@@ -94,7 +118,7 @@ export const INITIAL_EXAMS = [
     board: 'FBISE / CAIE O-Level 4024',
     date: offsetDate(7),
     time: '09:00 AM - 11:30 AM',
-    hall: 'Examination Hall 2',
+    hall: 'Readiness: Practice Past Paper 2',
     notes: 'Scientific calculator and geometry instruments required.'
   },
   {
@@ -104,7 +128,7 @@ export const INITIAL_EXAMS = [
     board: 'FBISE / CAIE O-Level 5070',
     date: offsetDate(12),
     time: '02:00 PM - 04:30 PM',
-    hall: 'Chemistry Lab Hall',
+    hall: 'Readiness: Stoichiometry Focus Needed',
     notes: 'Focus on Stoichiometry, Periodic Trends, and Salt Preparation.'
   },
   {
@@ -114,7 +138,7 @@ export const INITIAL_EXAMS = [
     board: 'FBISE / CAIE O-Level 5090',
     date: offsetDate(18),
     time: '09:00 AM - 11:00 AM',
-    hall: 'Main Auditorium',
+    hall: 'Readiness: On Track (Diagrams Reviewed)',
     notes: 'Review Enzyme temperature graphs and Genetics Punnett squares.'
   },
   {
@@ -124,7 +148,7 @@ export const INITIAL_EXAMS = [
     board: 'FBISE / CAIE O-Level 1123',
     date: offsetDate(-4), // Passed exam to demonstrate past exam handling
     time: '09:00 AM - 11:00 AM',
-    hall: 'Hall B',
+    hall: 'Concluded Session',
     notes: 'First paper concluded successfully.'
   }
 ];

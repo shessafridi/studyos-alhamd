@@ -111,10 +111,10 @@ export default function TaskFormModal({
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
           <div>
             <h3 style={{ fontSize: '18px', fontWeight: 700, color: '#0f172a' }}>
-              {initialData ? 'Edit Homework Assignment' : 'Add Homework Assignment'}
+              {initialData ? 'Edit Study Task' : 'Add Study Task'}
             </h3>
             <p style={{ fontSize: '13px', color: '#64748b' }}>
-              Keep your homework organized and tracked with clear priorities.
+              Plan your daily revision targets, assignments, or past paper practice.
             </p>
           </div>
           <button
@@ -301,7 +301,7 @@ export default function TaskFormModal({
                 boxShadow: '0 1px 3px rgba(37, 99, 235, 0.3)'
               }}
             >
-              {initialData ? 'Save Changes' : 'Create Assignment'}
+              {initialData ? 'Save Changes' : 'Create Study Task'}
             </button>
           </div>
         </form>

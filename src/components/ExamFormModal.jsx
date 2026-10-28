@@ -252,16 +252,16 @@ export default function ExamFormModal({
             </div>
           </div>
 
-          {/* Hall / Room */}
+          {/* Readiness / Target Status */}
           <div>
             <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#334155', marginBottom: '6px' }}>
-              Examination Center / Hall (Optional)
+              Revision Readiness / Target Status (Optional)
             </label>
             <input
               type="text"
               value={hall}
               onChange={e => setHall(e.target.value)}
-              placeholder="e.g. Science Block, Hall A"
+              placeholder="e.g. Target: A* • Practice 2 more past papers"
               style={{
                 width: '100%',
                 padding: '9px 12px',

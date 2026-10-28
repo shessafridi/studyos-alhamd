@@ -27,6 +27,7 @@ export default function Dashboard({
   onToggleTask,
   onOpenProfile,
   onOpenLesson,
+  onOpenZenFocus,
   onNotify
 }) {
   const [focusedTopic, setFocusedTopic] = useState(null);
@@ -75,20 +76,58 @@ export default function Dashboard({
           boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)'
         }}
       >
-        <div>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '11px', fontWeight: 600, color: '#38bdf8', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '6px' }}>
-            <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#38bdf8' }} />
-            Exhibition Demo Student Profile
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <img
+            src="/alhamdia-logo.png"
+            alt="Alhamdia Logo"
+            style={{
+              width: '56px',
+              height: '56px',
+              borderRadius: '50%',
+              backgroundColor: '#ffffff',
+              padding: '2px',
+              boxShadow: '0 0 16px rgba(212, 175, 55, 0.4)',
+              flexShrink: 0
+            }}
+          />
+          <div>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '11px', fontWeight: 700, color: '#fef08a', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '4px' }}>
+              <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#d4af37' }} />
+              Alhamdia International School & College • {profile.rollNo || 'ALH-1042'}
+            </div>
+            <h2 style={{ fontSize: '24px', fontWeight: 800, margin: '0 0 4px', color: '#f8fafc' }}>
+              Welcome back, {profile.name}! 👋
+            </h2>
+            <p style={{ fontSize: '13px', color: '#cbd5e1', margin: 0 }}>
+              {profile.grade} • {profile.targetGoal}
+            </p>
           </div>
-          <h2 style={{ fontSize: '24px', fontWeight: 800, margin: '0 0 6px', color: '#f8fafc' }}>
-            Welcome back, {profile.name}! 👋
-          </h2>
-          <p style={{ fontSize: '13.5px', color: '#94a3b8', margin: 0 }}>
-            {profile.grade} • {profile.targetGoal}
-          </p>
         </div>
 
         <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+          {onOpenZenFocus && (
+            <button
+              onClick={onOpenZenFocus}
+              style={{
+                padding: '9px 16px',
+                borderRadius: '8px',
+                backgroundColor: '#2563eb',
+                color: '#ffffff',
+                fontSize: '13px',
+                fontWeight: 700,
+                border: 'none',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                boxShadow: '0 4px 12px rgba(37, 99, 235, 0.4)'
+              }}
+            >
+              <span>🧘</span>
+              Enter Zen Focus Room
+            </button>
+          )}
+
           {onOpenProfile && (
             <button
               onClick={onOpenProfile}
